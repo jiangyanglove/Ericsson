@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <title>来自爱立信的邀请函</title>
+    <link rel="stylesheet" href="/static/style/index.css">
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <div class="fix_win">
+        <div class="page1" id="page1">
+            <span class="shadow_b"></span><span class="shadow_t1"></span><span class="shadow_t2"></span>
+            <img class="logo" src="/static/img/logo.png" alt="">
+            <img src="/static/img/invitation.png" alt="" class="invitation">
+            <div class="lock" id="lock">
+                <span class="hand hand1 animated infinite hand_move" id="hand1"></span>
+                <span class="hand hand2 animated infinite hand_move1" id="hand2"></span>
+                <div class="line1" id="line1">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="line2" id="line2">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="txt">
+                <!-- <h3>Please Use 5G to open </h3>
+                <p>解锁5G开启全新未来</p> -->
+                <img src="/static/img/txt.png" alt="">
+            </div>
+        </div>
+        <div class="video" id="video">
+            <div class="modal">
+                <span>loading...</span>
+            </div>
+            <div class="play_again" id="replay"> 
+                <img src="/static/img/replay.png" alt="" class="replay Rotation">
+                <span>再看一遍</span>
+            </div>
+            <img src="/static/img/play.png" class="play_icon" id="play_icon" />
+            <!-- <span class="play_modal" id="play_modal"></span> -->
+            <!-- <video src="/static/img/paper.mp4" id="player" preload="auto" controls></video> -->
+            <video muted="" data-autoplay="" preload="auto" x-webkit-airplay="true" x5-video-player-fullscreen="false"
+                x5-video-player-type="h5" playsinline="true" webkit-playsinline="true" x5-video-orientation="portraint"
+                src="/static/img/paper.mp4" class="video-tvc" id="player">抱歉，您的浏览器不支持内嵌视频
+            </video>
+        </div>
+    </div>
+
+
+    <script src="/static/vendor/jquery-3.1.1.min.js"></script>
+    <script src="/static/vendor/swiper-3.4.0.jquery.min.js"></script>
+    <script src="/static/vendor/H5lock.js"></script>
+    <script>
+        $(function () {
+            var opt = {
+                chooseType: 3, // 3 , 4 , 5,
+                width: $(window).innerWidth(), // lock wrap width
+                height: $(window).innerWidth(), // lock wrap height
+                container: 'lock', // the id attribute of element
+                inputEnd: function (psw) {} // when draw end param is password string
+            }
+            var lock = new H5lock(opt);
+            lock.init();
+            $('#play_icon, #replay').on('click', function () {
+                document.getElementById('player').play()
+                $(this).hide()
+            })
+
+        })
+
+        var video = document.getElementById("player");
+        video.addEventListener("ended", myFc3)
+
+        function myFc3() {
+            $('#replay').show();
+        }
+        $('.play_again').on('click', function () {
+            document.getElementById('player').play()
+            $(this).hide()
+        })
+        
+        video.addEventListener('canplaythrough', function () {
+            $('.modal').fadeOut();
+        })
+        
+    </script>
+</body>
+
+</html>
